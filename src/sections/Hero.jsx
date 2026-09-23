@@ -31,9 +31,9 @@ function Hero() {
         </div>
 
         <div className="hidden md:block bg-[#FDF6EC] rounded p-6 w-64 justify-self-center">
-          <div className="text-6xl mb-3 text-center">🍕</div>
-          <p className="font-bold text-lg text-[#2B2621]">Pizza Margherita</p>
-          <p className="text-sm text-[#6B7A4F] mb-3">Forneria Bella — 2.1 km</p>
+          <div className="text-6xl mb-3 text-center">🦐</div>
+          <p className="font-bold text-lg text-[#2B2621]">Bobó de Camarão</p>
+          <p className="text-sm text-[#6B7A4F] mb-3">Camarões — 2.1 km</p>
           <div className="flex justify-between items-center text-sm">
             <span className="text-[#C1502E] font-bold">R$ 42,90</span>
             <span className="text-[#6B7A4F]">25-35 min</span>
