@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import Sobre from './sections/Sobre';
 import Cardapio from './sections/Cardapio';
 import Depoimento from './sections/Depoimento';
+import Contato from './sections/Contato';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Sobre />
       <Cardapio />
       <Depoimento />
+      <Contato />
       <Footer />
     </div>
   );
