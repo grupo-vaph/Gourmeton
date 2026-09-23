@@ -9,23 +9,18 @@ function Sobre() {
   ];
 
   return (
-    <section id="sobre" className="bg-[#FDF6EC] py-20 px-6">
+    <section id="sobre" className="bg-[#FDF6EC] py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-[#C1502E] font-['Inter'] font-semibold uppercase text-sm tracking-wide">Por que GourmetOn</span>
-          <h2 className="font-['Fraunces'] font-bold text-3xl md:text-4xl text-[#2B2621] mt-3">
-            Tudo o que você precisa pra matar a fome, sem complicação
-          </h2>
-        </div>
+        <h2 className="font-bold text-3xl text-[#2B2621] mb-10">Por que escolher o GourmetOn</h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
           {beneficios.map((item) => (
-            <div key={item.titulo} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow border border-[#6B7A4F]/10">
-              <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#C1502E]/10 text-[#C1502E] text-xl mb-4">
-                {item.icone}
+            <div key={item.titulo} className="flex gap-4 border-l-2 border-[#C1502E] pl-4">
+              <div className="text-[#C1502E] text-xl mt-1">{item.icone}</div>
+              <div>
+                <h3 className="font-semibold text-[#2B2621] mb-1">{item.titulo}</h3>
+                <p className="text-sm text-[#2B2621]/70">{item.descricao}</p>
               </div>
-              <h3 className="font-['Fraunces'] font-bold text-lg text-[#2B2621] mb-2">{item.titulo}</h3>
-              <p className="font-['Inter'] text-sm text-[#2B2621]/70">{item.descricao}</p>
             </div>
           ))}
         </div>

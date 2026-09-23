@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaEnvelope, FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
 
 function Contato() {
   const [email, setEmail] = useState('');
@@ -7,8 +7,7 @@ function Contato() {
   const [erro, setErro] = useState('');
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-
+    e.preventDefault();
     setErro('');
 
     if (!email.includes('@') || !email.includes('.')) {
@@ -21,19 +20,16 @@ function Contato() {
   };
 
   return (
-    <section id="contato" className="bg-gradient-to-br from-[#4A5638] to-[#2B2621] py-20 px-6">
-      <div className="max-w-2xl mx-auto text-center">
-        <FaEnvelope className="text-[#E8987A] text-4xl mx-auto mb-4" />
-        <h2 className="font-['Fraunces'] font-bold text-3xl md:text-4xl text-[#FDF6EC] mb-3">
-          Seja o primeiro a saber das novidades
-        </h2>
-        <p className="font-['Inter'] text-[#FDF6EC]/70 mb-8">
+    <section id="contato" className="bg-[#4A5638] py-16 px-6">
+      <div className="max-w-xl mx-auto text-center">
+        <h2 className="font-bold text-3xl text-[#FDF6EC] mb-3">Seja o primeiro a saber das novidades</h2>
+        <p className="text-[#FDF6EC]/80 mb-7">
           Deixe seu e-mail e receba cupons exclusivos e lançamentos de restaurantes parceiros.
         </p>
 
         {enviado ? (
-          <div className="flex items-center justify-center gap-2 bg-[#FDF6EC]/10 text-[#FDF6EC] font-['Inter'] py-4 rounded-xl">
-            <FaCheckCircle className="text-[#8B9A6B]" />
+          <div className="flex items-center justify-center gap-2 border border-[#FDF6EC]/30 text-[#FDF6EC] py-3 rounded">
+            <FaCheckCircle />
             Inscrito com sucesso! Fique de olho no seu e-mail.
           </div>
         ) : (
@@ -44,15 +40,15 @@ function Contato() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="seuemail@exemplo.com"
               required
-              className="flex-1 px-5 py-3 rounded-lg font-['Inter'] text-[#2B2621] focus:outline-none focus:ring-2 focus:ring-[#C1502E]"
+              className="flex-1 px-4 py-2.5 rounded text-[#2B2621] focus:outline-none focus:ring-2 focus:ring-[#C1502E]"
             />
-            <button type="submit" className="bg-[#C1502E] hover:bg-[#8F3A20] text-[#FDF6EC] font-['Inter'] font-semibold px-6 py-3 rounded-lg transition-colors">
+            <button type="submit" className="bg-[#C1502E] text-[#FDF6EC] font-medium px-5 py-2.5 rounded hover:bg-[#8F3A20]">
               Quero receber
             </button>
           </form>
         )}
 
-        {erro && <p className="text-[#E8987A] font-['Inter'] text-sm mt-3">{erro}</p>}
+        {erro && <p className="text-[#E8987A] text-sm mt-2">{erro}</p>}
       </div>
     </section>
   );

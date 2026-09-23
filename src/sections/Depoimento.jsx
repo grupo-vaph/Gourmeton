@@ -1,4 +1,4 @@
-import { FaStar, FaQuoteLeft } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 
 function Depoimentos() {
   const depoimentos = [
@@ -8,32 +8,28 @@ function Depoimentos() {
   ];
 
   return (
-    <section id="depoimentos" className="bg-[#FDF6EC] py-20 px-6">
+    <section id="depoimentos" className="bg-[#FDF6EC] py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-[#C1502E] font-['Inter'] font-semibold uppercase text-sm tracking-wide">Depoimentos</span>
-          <h2 className="font-['Fraunces'] font-bold text-3xl md:text-4xl text-[#2B2621] mt-3">Quem já pediu, recomenda</h2>
-        </div>
+        <h2 className="font-bold text-3xl text-[#2B2621] mb-10">Quem já pediu, recomenda</h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-5">
           {depoimentos.map((item) => (
-            <div key={item.nome} className="bg-white rounded-2xl p-6 shadow-sm border border-[#6B7A4F]/10 flex flex-col">
-              <FaQuoteLeft className="text-[#C1502E]/30 text-2xl mb-4" />
-              <p className="font-['Inter'] text-[#2B2621]/80 text-sm mb-6 flex-1">"{item.texto}"</p>
-
-              <div className="flex gap-1 mb-4 text-[#E8987A]">
+            <div key={item.nome} className="border border-[#2B2621]/10 rounded p-5 bg-white">
+              <div className="flex gap-0.5 text-[#C1502E] mb-3 text-sm">
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} className={i < item.nota ? 'opacity-100' : 'opacity-20'} />
                 ))}
               </div>
 
+              <p className="text-sm text-[#2B2621]/80 mb-4">{item.texto}</p>
+
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#6B7A4F] text-[#FDF6EC] font-['Inter'] font-semibold flex items-center justify-center">
+                <div className="w-9 h-9 rounded bg-[#6B7A4F] text-[#FDF6EC] text-sm font-semibold flex items-center justify-center">
                   {item.nome.charAt(0)}
                 </div>
                 <div>
-                  <p className="font-['Inter'] font-semibold text-sm text-[#2B2621]">{item.nome}</p>
-                  <p className="font-['Inter'] text-xs text-[#2B2621]/50">{item.cidade}</p>
+                  <p className="font-medium text-sm text-[#2B2621]">{item.nome}</p>
+                  <p className="text-xs text-[#2B2621]/50">{item.cidade}</p>
                 </div>
               </div>
             </div>
@@ -44,4 +40,4 @@ function Depoimentos() {
   );
 }
 
-export default Depoimentos; 
+export default Depoimentos;
