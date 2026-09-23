@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 // TheMealDB: API gratuita, sem necessidade de chave.
-// filter.php?c=Seafood retorna uma lista de pratos da categoria "frutos do mar"
 const API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
 export function useCardapio() {

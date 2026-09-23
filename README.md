@@ -1,16 +1,134 @@
-# React + Vite
+# GourmetOn
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page para um app fictício de delivery de comida.
 
-Currently, two official plugins are available:
+**Deploy:** https://gourmeton-wine.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Repositório:** https://github.com/grupo-vaph/Gourmeton.git
 
-## React Compiler
+## Sobre o projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Página de apresentação do GourmetOn, construída em React com Tailwind CSS,
+que busca dados reais de uma API de comidas via `fetch` e exibe o resultado
+na seção de Cardápio.
 
-## Expanding the ESLint configuration
+## Tecnologias
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite)
+- Tailwind CSS v4
+- React Icons
+- Fetch API
+- TheMealDB (API gratuita de comidas, sem necessidade de chave)
+
+## Estrutura do projeto
+
+src/
+├── index.css → apenas o import do Tailwind
+├── main.jsx → ponto de entrada do React
+├── App.jsx → monta as seções na ordem em que aparecem
+├── components/
+│ ├── Navbar.jsx → menu fixo, muda de cor ao rolar a página
+│ └── Footer.jsx
+├── sections/
+│ ├── Hero.jsx
+│ ├── Sobre.jsx
+│ ├── Cardapio.jsx → consome a API
+│ ├── Depoimentos.jsx
+│ └── Contato.jsx → formulário de captura de e-mail
+└── hooks/
+└── useCardapio.js → lógica do fetch, separada do componente visual
+
+
+## Como rodar localmente
+
+```bash
+git clone [link do repositório]
+cd gourmeton
+npm install
+npm run dev
+```
+
+## API utilizada
+
+GET https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
+
+
+Retorna uma lista de pratos; exibimos os 6 primeiros na seção de Cardápio,
+usando `idMeal`, `strMeal` e `strMealThumb`.
+
+## Estilo visual
+
+Paleta "Terracota & Oliva", aplicada direto nas classes do Tailwind
+(`bg-[#C1502E]`, sem arquivo de tema):
+
+| Cor | Hex |
+|---|---|
+| Terracota | `#C1502E` |
+| Terracota escuro (hover) | `#8F3A20` |
+| Terracota claro | `#E8987A` |
+| Oliva | `#6B7A4F` |
+| Oliva escuro | `#4A5638` |
+| Creme (fundo) | `#FDF6EC` |
+| Carvão (texto) | `#2B2621` |
+
+O visual é intencionalmente simples: cores sólidas (sem gradiente), bordas
+finas em vez de sombra, cantos pouco arredondados.
+
+## O que foi feito
+
+- Menu fixo, muda de transparente para cor sólida depois de 20px de scroll
+  (`useState` + `useEffect` com listener de `scroll`)
+- Menu mobile com botão hambúrguer
+- Scroll suave entre seções (`scroll-smooth` no HTML, sem JS)
+- Seção Hero com título, CTA de download e avaliação em estrelas
+- Seção Sobre com 4 benefícios do app, em lista de 2 colunas
+- Seção Cardápio buscando dados reais da TheMealDB com `fetch`, com estados
+  de carregando / erro / sucesso
+- Seção Depoimentos com avaliações fictícias e nota em estrelas
+- Formulário de Contato controlado (`useState` por campo), com validação
+  simples de e-mail e mensagem de sucesso
+- Rodapé com contato e redes sociais
+- Responsivo (breakpoints do Tailwind: `sm`, `md`, `lg`)
+
+## O que não foi feito / limitações conhecidas
+
+- O formulário de Contato **não envia o e-mail pra lugar nenhum de verdade**
+  — só simula o sucesso no front-end. Não existe backend nesse projeto.
+- Os depoimentos são fictícios, escritos à mão (não vêm de nenhuma API ou
+  banco de dados).
+- Os pratos da seção Cardápio são sempre da categoria "Seafood" (frutos do
+  mar) — não há filtro por categoria escolhido pelo usuário.
+- Sem testes automatizados.
+- Sem dark mode.
+
+## Decisões técnicas
+
+- Trocamos a API sugerida no enunciado (Spoonacular) pela TheMealDB, que não
+  exige cadastro nem chave de API — reduz o risco de a demonstração falhar
+  por limite de requisições.
+- A lógica de busca de dados fica isolada em um hook customizado
+  (`useCardapio`), separando "buscar dados" de "exibir dados" — o componente
+  `Cardapio.jsx` não sabe como os dados chegam, só os usa.
+- Cores aplicadas direto via classes arbitrárias do Tailwind
+  (`bg-[#C1502E]`) em vez de um arquivo de tema central.
+
+## Uso de Inteligência Artificial
+
+Usamos IA (Claude) como apoio em algumas partes pontuais do projeto:
+
+- **Estilização com Tailwind CSS**: apoio na escolha das classes utilitárias
+  e na definição da paleta de cores do projeto.
+- **Scroll suave entre seções**: apoio na configuração do efeito de rolagem
+  suave ao clicar nos links do menu (classe `scroll-smooth` no `index.html`).
+- **Lógica de alguns componentes**: apoio para entender e implementar a
+  lógica de estado de componentes como o menu com efeito de scroll
+  (`Navbar.jsx`), o hook de busca de dados (`useCardapio.js`) e o formulário
+  de contato (`Contato.jsx`). 
+
+## Integrantes do grupo
+
+- Victor Ulisses de Morais Silva RM:572634 
+- Enzo Gabriel Pereira RM:570659 
+- Pedro Henrique Moura Aguiar RM:570715 
+- Henrique Giusti de Souza RM:570766 
+- Pietro Alexandre Guerato Objetivo RM:571232
