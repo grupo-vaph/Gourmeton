@@ -32,7 +32,7 @@ src/
 ├── sections/
 │ ├── Hero.jsx
 │ ├── Sobre.jsx
-│ ├── Cardapio.jsx → consome a API
+│ ├── Cardapio.jsx → consome a API e filtra por categoria
 │ ├── Depoimentos.jsx
 │ └── Contato.jsx → formulário de captura de e-mail
 └── hooks/
@@ -50,8 +50,11 @@ npm run dev
 
 ## API utilizada
 
-GET https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
+GET https://www.themealdb.com/api/json/v1/1/filter.php?c={categoria}
 
+
+O `{categoria}` muda conforme o botão escolhido pelo usuário: `Seafood`,
+`Beef`, `Chicken`, `Pasta`, `Vegetarian` ou `Dessert` (começa em `Seafood`).
 
 Retorna uma lista de pratos; exibimos os 6 primeiros na seção de Cardápio,
 usando `idMeal`, `strMeal` e `strMealThumb`.
@@ -84,6 +87,9 @@ finas em vez de sombra, cantos pouco arredondados.
 - Seção Sobre com 4 benefícios do app, em lista de 2 colunas
 - Seção Cardápio buscando dados reais da TheMealDB com `fetch`, com estados
   de carregando / erro / sucesso
+- Filtro por categoria no Cardápio (Frutos do mar, Carne, Frango, Massas,
+  Vegetariano e Sobremesas): o estado `categoria` é passado para o hook
+  `useCardapio`, e o `useEffect` busca de novo sempre que ela muda
 - Seção Depoimentos com avaliações fictícias e nota em estrelas
 - Formulário de Contato controlado (`useState` por campo), com validação
   simples de e-mail e mensagem de sucesso
@@ -96,8 +102,6 @@ finas em vez de sombra, cantos pouco arredondados.
   — só simula o sucesso no front-end. Não existe backend nesse projeto.
 - Os depoimentos são fictícios, escritos à mão (não vêm de nenhuma API ou
   banco de dados).
-- Os pratos da seção Cardápio são sempre da categoria "Seafood" (frutos do
-  mar) — não há filtro por categoria escolhido pelo usuário.
 - Sem testes automatizados.
 - Sem dark mode.
 
