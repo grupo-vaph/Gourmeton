@@ -47,11 +47,11 @@ function Navbar() {
           ))}
         </ul>
 
-        <a>
+        <a
         href="#contato"
-          className="hidden md:inline-block bg-[#C1502E] hover:bg-[#8F3A20] text-[#FDF6EC] font-['Inter'] font-semibold px-5 py-2 rounded-lg transition-colors"
+          className="hidden md:inline-block bg-[#C1502E] hover:bg-[#8F3A20] text-[#FDF6EC] font-['Inter'] font-semibold px-5 py-2 rounded-lg transition-colors">
         
-          Baixar app
+          Baixar apps
         </a>
 
         <button
