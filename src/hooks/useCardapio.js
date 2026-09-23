@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 // TheMealDB: API gratuita, sem necessidade de chave.
-const API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
+const API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
 
-export function useCardapio() {
+export function useCardapio(categoria) {
   const [pratos, setPratos] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
@@ -14,7 +14,7 @@ export function useCardapio() {
         setCarregando(true);
         setErro(null);
 
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL + categoria);
 
         if (!response.ok) {
           throw new Error('Não foi possível carregar o cardápio agora.');
@@ -31,7 +31,7 @@ export function useCardapio() {
     };
 
     buscarPratos();
-  }, []); // array vazio = roda só uma vez, quando o componente monta
+  }, [categoria]); // roda de novo sempre que a categoria mudar
 
   return { pratos, carregando, erro };
 }
